@@ -39,7 +39,9 @@ tw-hook[name="itm"] tw-link:hover {
 }
 tw-hook[name="itm"] .enchantment-link:hover {
     color: rgb(255, 247, 189);
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="hi" color="none"></tw-tag><tw-passagedata pid="1" name="start" tags="" position="450,0" size="100,100">You lay in bed.
+}
+.visited { color: #4169E1; }
+.visited:hover { color: DeepSkyBlue; }</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="hi" color="none"></tw-tag><tw-passagedata pid="1" name="start" tags="" position="450,0" size="100,100">You lay in bed.
 
 It is 12:00 AM.
 
@@ -56,7 +58,11 @@ You want a (t8n-time:0.5s)[[MIDNIGHT SNACK-&gt;bedroom]].
 
 |int&gt;[(link:&quot;Interactable&quot;)[]]
 |opn&gt;[(link:&quot;Openable&quot;)[]]
-|itm&gt;[(link:&quot;Item&quot;)[]]</tw-passagedata><tw-passagedata pid="2" name="BillyZone" tags="" position="600,0" size="100,100">ok
+
+(rerun:?actions)
+|itm&gt;[(link:&quot;Item&quot;)[]]
+
+</tw-passagedata><tw-passagedata pid="2" name="BillyZone" tags="" position="600,0" size="100,100">ok
 
 [[hehoo-&gt;start]] 
 
@@ -69,13 +75,13 @@ hehoo
 
 ENDING 1: HUNGRY SLUMBER
 
-(link-rerun: &quot;PLAY AGAIN?&quot;)[(reload:)]</tw-passagedata><tw-passagedata pid="4" name="bedroom" tags="" position="450,150" size="100,100">
+(link-rerun: &quot;PLAY AGAIN?&quot;)[(reload:)]</tw-passagedata><tw-passagedata pid="4" name="bedroom" tags="" position="450,150" size="100,100">\
 &lt;!--This is your room. It is small and cramped. The |off)[(link-rerun: &quot;LIGHTSWITCH&quot;)[(set:$br_lightOn to true)(show:?on)(hide:?off)] is off. You can hardly see.] |on)[(link-rerun: &quot;LIGHTSWITCH&quot;)[(set:$br_lightOn to false)(show:?off)(hide:?on)] is on. You can see various cardboard boxes littered around your room. Most are open and empty, but you do notice one (if:$br_boxOpened is false)[(link:&quot;UNOPENED BOX&quot;)[(set: $br_boxOpened to true)NEWLY OPENED BOX. It contains COCK and BALLS]](else:)[NEWLY OPENED BOX. (if: $br_boxItems = 0)[his ass is EMPTY](else:)[It contains a BLANKET.]]. The room is overall fairly dusty.]
 Comment Text
 This is your room. It is small and cramped. The |off)[(link-rerun: &quot;LIGHTSWITCH&quot;)[(set:$br_lightOn to true)(show:?on)(hide:?off)(if:$br_boxOpened is false)[(show:?bClosed)](else:)[(show:?bOpen)]] is off. You can hardly see.] |on)[(link-rerun: &quot;LIGHTSWITCH&quot;)[(set:$br_lightOn to false)(show:?off)(hide:?on)] is on. You can see various cardboard boxes littered around your room. Most are open and empty, but you do notice one |bClosed)[(link:&quot;UNOPENED BOX&quot;)[(set: $br_boxOpened to true)(hide:?bClosed)(show:?bOpen)]]|bOpen)[NEWLY OPENED BOX. (if: $br_boxItems is 0)[It is empty.](else:)
 [It contains: \
 	BLANKET, GUN]\
-]. The room is overall fairly dusty.]--&gt;
+]. The room is overall fairly dusty.]--&gt;\
 (set:$eX_actions to (a:))\
 This is your room. The \
 	|off)[\
@@ -131,14 +137,14 @@ This is your room. The \
         (else:)[(go-to:&quot;E1&quot;)]\
     ]\
 ]
-(t8n-time:0.5s)[[GO TO LIVING ROOM-&gt;livingroom]]
-
-|actions)[(display:&quot;actions&quot;)]
-
-(show:?actions)
-\(if:$br_lightOn is false)[(show:?off)](else:)[(show:?on)]
-\(if:$br_boxOpened is false)[(show:?bClosed)](else:)[(show:?bOpen)]
-
+(t8n-time:0.5s)[[GO TO LIVING ROOM-&gt;livingroom]]\
+\
+|actions)[(display:&quot;actions&quot;)]\
+\
+(show:?actions)\
+(if:$br_lightOn is false)[(show:?off)](else:)[(show:?on)]\
+(if:$br_boxOpened is false)[(show:?bClosed)](else:)[(show:?bOpen)]\
+\
 (click:&quot;BLANKET&quot;)[\
 	(set:$e2_coziness to it + 1)\
 	(set:$br_boxItems to it - (a:&quot;a BLANKET&quot;))\
@@ -146,7 +152,7 @@ This is your room. The \
     (set:$eX_actions to it + (a:&quot;You grab the BLANKET. It feels fuzzy.&quot;))\
     (rerun:?actions)\
 ]\
-
+\
 (click:&quot;STALE CHIPS&quot;)[\
 	(set:$eX_energy to it + 5)\
     (set:$br_boxItems to it - (a:&quot;STALE CHIPS&quot;))\
@@ -176,7 +182,16 @@ This is the living room. It sucks.
 (show:?fClosed)
 (hide:?fOpen)</tw-passagedata><tw-passagedata pid="8" name="actions" tags="" position="250,0" size="100,100">(for:each _i, ...$eX_actions)[\
 	_i
-]</tw-passagedata><tw-passagedata pid="9" name="E3" tags="" position="0,200" size="100,100">You return to sleep. Hunger having been satiated, you feel the cool breeze brush against your skin.
+]
+
+&lt;script&gt;
+;(function () {
+	var favicon  = document.createElement(&quot;link&quot;);
+	favicon.rel  = &quot;shortcut icon&quot;;
+	favicon.href = &quot;/favicon.ico&quot;;
+	document.head.appendChild(favicon);
+}());
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="9" name="E3" tags="" position="0,200" size="100,100">You return to sleep. Hunger having been satiated, you feel the cool breeze brush against your skin.
 
 ENDING 3: GOOD NIGHT&#39;S REST
 
