@@ -11,6 +11,34 @@
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play midnight snack time.</tw-noscript></noscript></tw-story>
 <tw-storydata name="midnight snack time" startnode="1" creator="Twine" creator-version="2.7.1" format="Harlowe" format-version="3.3.7" ifid="5995AB44-C04C-43F9-B2DA-DB3AA42C2A15" options="" tags="" zoom="0.6" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar {
 	display: none;
+}
+
+
+tw-hook[name="int"] tw-link {
+    color: rgb(255, 102, 204);
+}
+tw-hook[name="int"] tw-link:hover {
+    color: rgb(255, 176, 246);
+}
+
+tw-hook[name="opn"] tw-link {
+    color: rgb(255, 179, 102);
+}
+tw-hook[name="opn"] tw-link:hover {
+    color: rgb(255, 238, 144);
+}
+
+tw-hook[name="itm"] tw-link {
+    color: rgb(179, 255, 102);
+}
+tw-hook[name="itm"] .enchantment-link {
+    color: rgb(179, 255, 102);
+}
+tw-hook[name="itm"] tw-link:hover {
+    color: rgb(255, 247, 189);
+}
+tw-hook[name="itm"] .enchantment-link:hover {
+    color: rgb(255, 247, 189);
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="hi" color="none"></tw-tag><tw-passagedata pid="1" name="start" tags="" position="450,0" size="100,100">You lay in bed.
 
 It is 12:00 AM.
@@ -23,8 +51,12 @@ You want a (t8n-time:0.5s)[[MIDNIGHT SNACK-&gt;bedroom]].
 
 (set: $br_boxOpened to false)
 (set: $br_lightOn to false)
-(set: $br_boxItems to (a: &#39;a TF TRIGGER (tbd)&#39;, &#39;a BLANKET&#39;, &#39;STALE CHIPS&#39;))
-</tw-passagedata><tw-passagedata pid="2" name="BillyZone" tags="" position="600,0" size="100,100">ok
+(set: $br_boxItems to (a: &#39;a TRUCKER\&#39;S CAP&#39;, &#39;a BLANKET&#39;, &#39;STALE CHIPS&#39;))
+
+
+|int&gt;[(link:&quot;Interactable&quot;)[]]
+|opn&gt;[(link:&quot;Openable&quot;)[]]
+|itm&gt;[(link:&quot;Item&quot;)[]]</tw-passagedata><tw-passagedata pid="2" name="BillyZone" tags="" position="600,0" size="100,100">ok
 
 [[hehoo-&gt;start]] 
 
@@ -37,7 +69,8 @@ hehoo
 
 ENDING 1: HUNGRY SLUMBER
 
-(link: &quot;PLAY AGAIN?&quot;)[(reload:)]</tw-passagedata><tw-passagedata pid="4" name="bedroom" tags="" position="450,150" size="100,100">&lt;!--This is your room. It is small and cramped. The |off)[(link-rerun: &quot;LIGHTSWITCH&quot;)[(set:$br_lightOn to true)(show:?on)(hide:?off)] is off. You can hardly see.] |on)[(link-rerun: &quot;LIGHTSWITCH&quot;)[(set:$br_lightOn to false)(show:?off)(hide:?on)] is on. You can see various cardboard boxes littered around your room. Most are open and empty, but you do notice one (if:$br_boxOpened is false)[(link:&quot;UNOPENED BOX&quot;)[(set: $br_boxOpened to true)NEWLY OPENED BOX. It contains COCK and BALLS]](else:)[NEWLY OPENED BOX. (if: $br_boxItems = 0)[his ass is EMPTY](else:)[It contains a BLANKET.]]. The room is overall fairly dusty.]
+(link-rerun: &quot;PLAY AGAIN?&quot;)[(reload:)]</tw-passagedata><tw-passagedata pid="4" name="bedroom" tags="" position="450,150" size="100,100">
+&lt;!--This is your room. It is small and cramped. The |off)[(link-rerun: &quot;LIGHTSWITCH&quot;)[(set:$br_lightOn to true)(show:?on)(hide:?off)] is off. You can hardly see.] |on)[(link-rerun: &quot;LIGHTSWITCH&quot;)[(set:$br_lightOn to false)(show:?off)(hide:?on)] is on. You can see various cardboard boxes littered around your room. Most are open and empty, but you do notice one (if:$br_boxOpened is false)[(link:&quot;UNOPENED BOX&quot;)[(set: $br_boxOpened to true)NEWLY OPENED BOX. It contains COCK and BALLS]](else:)[NEWLY OPENED BOX. (if: $br_boxItems = 0)[his ass is EMPTY](else:)[It contains a BLANKET.]]. The room is overall fairly dusty.]
 Comment Text
 This is your room. It is small and cramped. The |off)[(link-rerun: &quot;LIGHTSWITCH&quot;)[(set:$br_lightOn to true)(show:?on)(hide:?off)(if:$br_boxOpened is false)[(show:?bClosed)](else:)[(show:?bOpen)]] is off. You can hardly see.] |on)[(link-rerun: &quot;LIGHTSWITCH&quot;)[(set:$br_lightOn to false)(show:?off)(hide:?on)] is on. You can see various cardboard boxes littered around your room. Most are open and empty, but you do notice one |bClosed)[(link:&quot;UNOPENED BOX&quot;)[(set: $br_boxOpened to true)(hide:?bClosed)(show:?bOpen)]]|bOpen)[NEWLY OPENED BOX. (if: $br_boxItems is 0)[It is empty.](else:)
 [It contains: \
@@ -46,7 +79,7 @@ This is your room. It is small and cramped. The |off)[(link-rerun: &quot;LIGHTSW
 (set:$eX_actions to (a:))\
 This is your room. The \
 	|off)[\
-    	(link-rerun:&quot;LIGHTSWITCH&quot;)[\
+    	|int&gt;[(link-rerun:&quot;LIGHTSWITCH&quot;)[\
         	(set:$br_lightOn to true)\
             (show:?on)\
             (hide:?off)\
@@ -55,33 +88,33 @@ This is your room. The \
             ](else:)[\
             	(show:?bOpen)\
             ]\
-        ]\
+        ]]\
         is off. You can hardly see.
     ]\
     |on)[\
-    	(link-rerun:&quot;LIGHTSWITCH&quot;)[\
+    	|int&gt;[(link-rerun:&quot;LIGHTSWITCH&quot;)[\
         	(set:$br_lightOn to false)\
             (hide:?on)\
             (show:?off)\
-        ]\
+        ]]\
         is on. You can see various cardboard boxes littered around your room. Most are open and empty, but you do notice one |bClosed)[\
-        	(link:&quot;UNOPENED BOX&quot;)[\
+        	|opn&gt;[(link:&quot;UNOPENED BOX&quot;)[\
             	(set: $br_boxOpened to true)\
                 (hide:?bClosed)\
                 (show:?bOpen)\
-            ].\
+            ]].\
         ]\
         |bOpen)[\
-        	(text-colour:#8cfffd)[NEWLY OPENED BOX]. \
+        	(text-colour:#fff4b8)[NEWLY OPENED BOX]. \
             (if: $br_boxItems&#39;s length is 0)[\
             	It is empty.\
             ](else:)[\
             It contains \
             (for: each _i, ...$br_boxItems)[\
                 (if: $br_boxItems&#39;s length &gt; 1 and $br_boxItems&#39;s last is _i)[\
-                	and _i.\
+                	|itm&gt;[and _i].\
                 ](else:)[\
-                	_i(unless: $br_boxItems&#39;s last is _i)[, ](else:)[.]\
+                	|itm&gt;[_i](unless: $br_boxItems&#39;s last is _i)[, ](else:)[.]\
                 ]\
             ]\
         ]\
@@ -120,7 +153,9 @@ This is your room. The \
     (rerun:?bOpen)\
     (set:$eX_actions to it + (a:&quot;You eat the STALE CHIPS. They were salty.&quot;))\
     (rerun:?actions)\
-]</tw-passagedata><tw-passagedata pid="5" name="bathroom" tags="" position="150,150" size="100,100">You see a (link-reveal: &quot;MIRROR&quot;)[(show: ?mirror)]. |mirror)[
+]
+
+&lt;img src=&quot;imgs/mirror.gif&quot;&gt;</tw-passagedata><tw-passagedata pid="5" name="bathroom" tags="" position="150,150" size="100,100">You see a (link-reveal: &quot;MIRROR&quot;)[(show: ?mirror)]. |mirror)[
 &lt;img src=&quot;https://static.wikia.nocookie.net/omori/images/e/ee/Something_Mirror.gif/revision/latest/scale-to-width-down/250?cb=20210520110507&quot;\&gt;]
 
 (t8n-time:0.5s)[[GO TO LIVING ROOM-&gt;livingroom]]</tw-passagedata><tw-passagedata pid="6" name="livingroom" tags="" position="300,150" size="100,100">(set:$eX_actions to (a:))\
@@ -141,21 +176,21 @@ This is the living room. It sucks.
 (t8n-time:0.5s)[[GO TO LIVING ROOM-&gt;livingroom]]
 
 (show:?fClosed)
-(hide:?fOpen)</tw-passagedata><tw-passagedata pid="8" name="actions" tags="" position="300,0" size="100,100">(for:each _i, ...$eX_actions)[\
+(hide:?fOpen)</tw-passagedata><tw-passagedata pid="8" name="actions" tags="" position="250,0" size="100,100">(for:each _i, ...$eX_actions)[\
 	_i
 ]</tw-passagedata><tw-passagedata pid="9" name="E3" tags="" position="0,200" size="100,100">You return to sleep. Hunger having been satiated, you feel the cool breeze brush against your skin.
 
 ENDING 3: GOOD NIGHT&#39;S REST
 
-(link: &quot;PLAY AGAIN?&quot;)[(reload:)]</tw-passagedata><tw-passagedata pid="10" name="E2" tags="" position="0,100" size="100,100">You return to sleep. Hunger having been satiated, you feel the cool breeze brush against your skin.
+(link-rerun: &quot;PLAY AGAIN?&quot;)[(reload:)]</tw-passagedata><tw-passagedata pid="10" name="E2" tags="" position="0,100" size="100,100">You return to sleep. Hunger having been satiated, you feel the cool breeze brush against your skin.
 
 ENDING 3: GOOD NIGHT&#39;S REST
 
-(link: &quot;PLAY AGAIN?&quot;)[(reload:)]</tw-passagedata><tw-passagedata pid="11" name="TE" tags="" position="100,0" size="100,100">You return to sleep. Hunger having been satiated, you feel the cool breeze brush against your skin.
+(link-rerun: &quot;PLAY AGAIN?&quot;)[(reload:)]</tw-passagedata><tw-passagedata pid="11" name="TE" tags="" position="100,0" size="100,100">You return to sleep. Hunger having been satiated, you feel the cool breeze brush against your skin.
 
 ENDING 3: GOOD NIGHT&#39;S REST
 
-(link: &quot;PLAY AGAIN?&quot;)[(reload:)]</tw-passagedata></tw-storydata>
+(link-rerun: &quot;PLAY AGAIN?&quot;)[(reload:)]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
