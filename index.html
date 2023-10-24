@@ -16,34 +16,60 @@
 
 tw-hook[name="int"] tw-link {
     color: rgb(255, 102, 204);
+  	transition: 0.5s;
 }
 tw-hook[name="int"] tw-link:hover {
     color: rgb(255, 176, 246);
+	text-shadow: 0px 0px 10px rgb(255, 176, 246);
+  	transition: 0.5s;
 }
 
 tw-hook[name="opn"] tw-link {
     color: rgb(255, 179, 102);
+  	transition: 0.5s;
 }
 tw-hook[name="opn"] tw-link:hover {
     color: rgb(255, 238, 144);
+	text-shadow: 0px 0px 10px rgb(255, 238, 144);
+  	transition: 0.5s;
 }
 
 tw-hook[name="itm"] tw-link {
     color: rgb(179, 255, 102);
+  	transition: 0.5s;
 }
 tw-hook[name="itm"] .enchantment-link {
     color: rgb(179, 255, 102);
+  	transition: 0.5s;
 }
 tw-hook[name="itm"] tw-link:hover {
     color: rgb(255, 247, 189);
+	text-shadow: 0px 0px 10px rgb(255, 247, 189);
+  	transition: 0.5s;
 }
 tw-hook[name="itm"] .enchantment-link:hover {
     color: rgb(255, 247, 189);
+	text-shadow: 0px 0px 10px rgb(255, 247, 189);
+  	transition: 0.5s;
 }
-.visited { color: #0dceff; }
-.visited:hover { color: #adfbff; }
-tw-link { color: #0dceff; }
-tw-link:hover { color: #adfbff; }
+.visited { 
+  	color: #0dceff; 
+  	transition: 0.5s;
+}
+.visited:hover { 
+	color: #adfbff;  
+	text-shadow: 0px 0px 10px #adfbff;
+  	transition: 0.5s;
+}
+tw-link { 
+  	color: #0dceff; 
+  	transition: 0.5s;
+}
+tw-link:hover { 
+  	color: #adfbff; 
+	text-shadow: 0px 0px 10px #adfbff;
+  	transition: 0.5s;
+}
 
 
 @import url('https://fonts.googleapis.com/css?family=Roboto');
@@ -59,25 +85,25 @@ tw-story {
 .transition-in[data-t8n^=dissolve] {
 	-webkit-animation:appear 0ms step-start;
 	animation:appear 0ms step-start
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="hi" color="none"></tw-tag><tw-passagedata pid="1" name="start" tags="" position="450,0" size="100,100">You lay in bed. (live: 0.05s)[(either:&quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;:3&quot;)]
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="hi" color="none"></tw-tag><tw-passagedata pid="1" name="start" tags="" position="450,0" size="100,100">You lay in bed.
 
 It is 12:00 AM.
 
-You want a (t8n-time:0.5s)[[MIDNIGHT SNACK-&gt;bedroom]].
-
-(set: $eX_energy to 0)
-(set: $eX_actions to (a:))
-(set: $e2_coziness to 0)
-
-(set: $br_boxOpened to false)
-(set: $br_lightOn to false)
-(set: $br_boxItems to (a: &#39;a TRUCKER\&#39;S CAP&#39;, &#39;a BLANKET&#39;, &#39;STALE CHIPS&#39;))
-
-
+You want a (t8n-time:0.5s)[[MIDNIGHT SNACK-&gt;bedroom]].\
+\
+(set: $eX_energy to 0)\
+(set: $eX_actions to (a:))\
+(set: $e2_coziness to 0)\
+\
+(set: $br_boxOpened to false)\
+(set: $br_lightOn to false)\
+(set: $br_boxItems to (a: &#39;a TRUCKER\&#39;S CAP&#39;, &#39;a BLANKET&#39;, &#39;STALE CHIPS&#39;))\
+\
+&lt;!--
 |int&gt;[(link:&quot;Interactable&quot;)[]]
 |opn&gt;[(link:&quot;Openable&quot;)[]]
 |itm&gt;[(link:&quot;Item&quot;)[]]
-
+--&gt;\
 &lt;script&gt;
 ;(function () {
 	var favicon  = document.createElement(&quot;link&quot;);
