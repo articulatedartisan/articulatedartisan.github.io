@@ -9,82 +9,117 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play midnight snack time.</tw-noscript></noscript></tw-story>
-<tw-storydata name="midnight snack time" startnode="1" creator="Twine" creator-version="2.7.1" format="Harlowe" format-version="3.3.7" ifid="5995AB44-C04C-43F9-B2DA-DB3AA42C2A15" options="" tags="" zoom="0.6" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-sidebar {
+<tw-storydata name="midnight snack time" startnode="1" creator="Twine" creator-version="2.7.1" format="Harlowe" format-version="3.3.7" ifid="5995AB44-C04C-43F9-B2DA-DB3AA42C2A15" options="" tags="" zoom="0.6" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@font-face {
+	font-display: swap;
+	font-family: "ponderosa.regular";
+	src: url("sundae.ttf") format("truetype");
+  	font-weight: normal;
+   	font-style: normal;
+}
+
+@font-face {
+	font-display: swap;
+	font-family: "ponderosa.regular";
+	src: url("pretzel.ttf") format("truetype");
+  	font-weight: bold;
+   	font-style: bold;
+
+}
+
+tw-story {
+	font-family: "ponderosa.regular", monospace;
+   	font-weight: normal;
+   	font-size: 1.5em;
+    line-height: 1.8em;
+    width: 100%;
+    margin: 0% auto;
+  
+  	background-image: url('imgs/bg.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+  	background-position-y: center;
+}
+
+tw-sidebar {
 	display: none;
 }
 
-
 tw-hook[name="int"] tw-link {
     color: rgb(255, 102, 204);
-  	transition: 0.5s;
+  	transition: 0s;
 }
 tw-hook[name="int"] tw-link:hover {
     color: rgb(255, 176, 246);
 	text-shadow: 0px 0px 10px rgb(255, 176, 246);
-  	transition: 0.5s;
+  	transition: 0s;
 }
 
 tw-hook[name="opn"] tw-link {
     color: rgb(255, 179, 102);
-  	transition: 0.5s;
+  	transition: 0s;
 }
 tw-hook[name="opn"] tw-link:hover {
     color: rgb(255, 238, 144);
 	text-shadow: 0px 0px 10px rgb(255, 238, 144);
-  	transition: 0.5s;
+  	transition: 0s;
 }
 
 tw-hook[name="itm"] tw-link {
     color: rgb(179, 255, 102);
-  	transition: 0.5s;
+  	transition: 0s;
 }
 tw-hook[name="itm"] .enchantment-link {
     color: rgb(179, 255, 102);
-  	transition: 0.5s;
+  	transition: 0s;
 }
 tw-hook[name="itm"] tw-link:hover {
     color: rgb(255, 247, 189);
 	text-shadow: 0px 0px 10px rgb(255, 247, 189);
-  	transition: 0.5s;
+  	transition: 0s;
 }
 tw-hook[name="itm"] .enchantment-link:hover {
     color: rgb(255, 247, 189);
 	text-shadow: 0px 0px 10px rgb(255, 247, 189);
-  	transition: 0.5s;
+  	transition: 0s;
 }
 .visited { 
   	color: #0dceff; 
-  	transition: 0.5s;
+  	transition: 0s;
 }
 .visited:hover { 
 	color: #adfbff;  
 	text-shadow: 0px 0px 10px #adfbff;
-  	transition: 0.5s;
+  	transition: 0s;
 }
 tw-link { 
   	color: #0dceff; 
-  	transition: 0.5s;
+  	transition: 0s;
 }
 tw-link:hover { 
   	color: #adfbff; 
 	text-shadow: 0px 0px 10px #adfbff;
-  	transition: 0.5s;
-}
-
-
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-
-tw-story {
-  	font-family: "Roboto", Roboto, monospace;
-	font-size: 1.5em;
-	line-height: 1.8em;
-  	width: 100%;
-	margin: 0% auto;
+  	transition: 0s;
 }
 
 .transition-in[data-t8n^=dissolve] {
 	-webkit-animation:appear 0ms step-start;
 	animation:appear 0ms step-start
+}
+
+@keyframes rotating {
+    0%   { transform: rotateZ(0deg); }
+    100% { transform: rotateZ(360deg); }
+}
+
+tw-hook[name="rotate"] {
+	display: inline-block;
+	animation: silly 1s cubic-bezier;
+  	animation-fill-mode: both;
+	animation-delay: 1s;
+}
+@keyframes silly {
+  0%	{ transform: translateY(0%); 	}
+  100%	{ transform: translateY(2000%); }
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="hi" color="none"></tw-tag><tw-passagedata pid="1" name="start" tags="" position="450,0" size="100,100">You lay in bed.
 
 It is 12:00 AM.
@@ -99,6 +134,8 @@ You want a (t8n-time:0.5s)[[MIDNIGHT SNACK-&gt;bedroom]].\
 (set: $br_lightOn to false)\
 (set: $br_boxItems to (a: &#39;a TRUCKER\&#39;S CAP&#39;, &#39;a BLANKET&#39;, &#39;STALE CHIPS&#39;))\
 \
+(set: $bthr_cabOpened to false)\
+(set: $bthr_boxItems to (a: &#39;a PILL BOTTLE&#39;, &#39;a LITTLE MAN&#39;))\
 &lt;!--
 |int&gt;[(link:&quot;Interactable&quot;)[]]
 |opn&gt;[(link:&quot;Openable&quot;)[]]
@@ -144,7 +181,7 @@ This is your room. The \
             	(show:?bOpen)\
             ]\
         ]]\
-        is off. You can hardly see.
+        is off. You can hardly see.\
     ]\
     |on)[\
     	|int&gt;[(link-rerun:&quot;LIGHTSWITCH&quot;)[\
@@ -174,8 +211,8 @@ This is your room. The \
             ]\
         ]\
     ]\
-	The room is overall fairly dusty.
-]\
+	The room is overall fairly dusty.\
+]
 
 (link-rerun:&quot;GO BACK TO SLEEP&quot;)[\
 	(if:$eX_energy &gt; 0)[\
@@ -186,10 +223,10 @@ This is your room. The \
         (else:)[(go-to:&quot;E1&quot;)]\
     ]\
 ]
-(t8n-time:0.5s)[[GO TO LIVING ROOM-&gt;livingroom]]\
+(t8n-time:0.5s)[[GO TO LIVING ROOM-&gt;livingroom]]
 
 |actions)[(display:&quot;actions&quot;)]\
-\
+
 (show:?actions)\
 (if:$br_lightOn is false)[(show:?off)](else:)[(show:?on)]\
 (if:$br_boxOpened is false)[(show:?bClosed)](else:)[(show:?bOpen)]\
@@ -208,10 +245,53 @@ This is your room. The \
     (rerun:?bOpen)\
     (set:$eX_actions to it + (a:&quot;You eat the STALE CHIPS. They were salty.&quot;))\
     (rerun:?actions)\
-]</tw-passagedata><tw-passagedata pid="5" name="bathroom" tags="" position="150,150" size="100,100">You see a |int&gt;[(link-reveal: &quot;MIRROR&quot;)[(show: ?mirror)]]. |mirror)[
+]</tw-passagedata><tw-passagedata pid="5" name="bathroom" tags="" position="150,150" size="100,100">(set:$eX_actions to (a:))\
+Your\
+|mcabClosed)[|opn&gt;[\
+	(link-rerun:&quot;MEDICINE CABINET&quot;)[(show: ?mcabOpen)(hide: ?mcabClosed)(set: $bthr_cabOpened to true)]
+\] is closed.]\
+|mcabOpen)[\
+	MEDICINE CABINET is open.\
+	(if: $bthr_boxItems&#39;s length is 0)[\
+		It is empty.\
+	](else:)[\
+		It contains \
+		(for: each _i, ...$bthr_boxItems)[\
+			(if: $bthr_boxItems&#39;s length &gt; 1 and $bthr_boxItems&#39;s last is _i)[\
+				|itm&gt;[and _i].\
+			](else:)[\
+				|itm&gt;[_i](unless: $bthr_boxItems&#39;s last is _i)[, ](else:)[.]\
+			]\
+		]\
+	]\
+]\
+
+You see a |int&gt;[(link-reveal: &quot;MIRROR&quot;)[(show: ?mirror)]]. |mirror)[
 &lt;img src=&quot;imgs/mirror.gif&quot;&gt;]
 
-(t8n-time:0.5s)[[GO TO LIVING ROOM-&gt;livingroom]]</tw-passagedata><tw-passagedata pid="6" name="livingroom" tags="" position="300,150" size="100,100">(set:$eX_actions to (a:))\
+(t8n-time:0.5s)[[GO TO LIVING ROOM-&gt;livingroom]]\
+
+|actions)[(display:&quot;actions&quot;)]
+
+(show: ?actions)\
+
+(if: $bthr_cabOpened is false)[\
+	(hide: ?mcabOpen)(show: ?mcabClosed)\
+](else:)[\
+	(show: ?mcabOpen)(hide: ?mcabClosed)\
+]
+
+(click:&quot;PILL BOTTLE&quot;)[\
+	(set:$eX_energy to it + 5)\
+    (set:$br_boxItems to it - (a:&quot;a PILL BOTTLE&quot;))\
+    
+    (go-to:&quot;TF1-a&quot;)
+    
+    &lt;!-- keeping this for in case i need it later :3 --&gt;
+    (rerun:?bOpen)\
+    (set:$eX_actions to it + (a:&quot;You eat the PILL BOTTLE. They were salty.&quot;))\
+    (rerun:?actions)\
+]</tw-passagedata><tw-passagedata pid="6" name="livingroom" tags="" position="300,150" size="100,100">(set:$eX_actions to (a:))\
 This is the living room. It sucks.
 
 (t8n-time:0.5s)[[GO TO BEDROOM-&gt;bedroom]]
@@ -230,7 +310,7 @@ This is the living room. It sucks.
 
 (show:?fClosed)
 (hide:?fOpen)</tw-passagedata><tw-passagedata pid="8" name="actions" tags="" position="250,0" size="100,100">(for:each _i, ...$eX_actions)[\
-	_i
+	(text-colour:#4c6ef5)[&gt;] _i
 ]</tw-passagedata><tw-passagedata pid="9" name="E3" tags="" position="0,200" size="100,100">You return to sleep. Hunger having been satiated, you feel the cool breeze brush against your skin.
 
 ENDING 3: GOOD NIGHT&#39;S REST
@@ -242,6 +322,10 @@ ENDING 3: GOOD NIGHT&#39;S REST
 (link-rerun: &quot;PLAY AGAIN?&quot;)[(reload:)]</tw-passagedata><tw-passagedata pid="11" name="TE" tags="" position="100,0" size="100,100">You return to sleep. Hunger having been satiated, you feel the cool breeze brush against your skin.
 
 ENDING 3: GOOD NIGHT&#39;S REST
+
+(link-rerun: &quot;PLAY AGAIN?&quot;)[(reload:)]</tw-passagedata><tw-passagedata pid="12" name="TF1-a" tags="" position="0,500" size="100,100">uhh you u    tf ,
+
+ENDING 5: TF ENDING OR SOMETHING
 
 (link-rerun: &quot;PLAY AGAIN?&quot;)[(reload:)]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
