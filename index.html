@@ -37,7 +37,9 @@ tw-story {
   	background-image: url('imgs/bg.gif');
 	background-repeat: no-repeat;
 	background-size: cover;
+  	background-position-x: center;
   	background-position-y: center;
+  	background-attachment: fixed;
   	opacity: 1;
   
   	background-color: green;
@@ -123,6 +125,10 @@ tw-hook[name="rotate"] {
 @keyframes silly {
   0%	{ transform: translateY(0%); 	}
   100%	{ transform: translateY(2000%); }
+}
+
+img {
+	max-width: 100%;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="hi" color="none"></tw-tag><tw-passagedata pid="1" name="start" tags="" position="450,0" size="100,100">You lay in bed.
 
 It is 12:00 AM.
@@ -270,7 +276,7 @@ Your\
 ]\
 
 You see a |int&gt;[(link-reveal: &quot;MIRROR&quot;)[(show: ?mirror)]]. |mirror)[
-&lt;img src=&quot;imgs/mirror.gif&quot;&gt;]
+&lt;img src=&quot;imgs/mirror.png&quot;&gt;]
 
 (t8n-time:0.5s)[[GO TO LIVING ROOM-&gt;livingroom]]\
 
