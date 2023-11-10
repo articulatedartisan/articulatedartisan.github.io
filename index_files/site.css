@@ -1,15 +1,4 @@
-@media (prefers-color-scheme: light) {
-    :root {
-	--background-color: #111111;
-	--softbox-color: #333333;
-	--foreground-color: #f2f2f2;
-	--link-color: cyan;
-	--link-vis-color: cyan;
-	--emph-color: #99ff99;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
+@media {
     :root {
 	--background-color: #111111;
 	--softbox-color: #333333;
