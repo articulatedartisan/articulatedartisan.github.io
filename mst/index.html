@@ -127,7 +127,18 @@ tw-hook[name="rotate"] {
 
 img {
 	max-width: 100%;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="hi" color="none"></tw-tag><tw-passagedata pid="1" name="start" tags="" position="450,0" size="100,100">You lay in bed.
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">var audio= document.createElement('audio');
+audio.src=
+	'assets/audio/chtr.mp3';
+audio.loop = true;
+audio.play();
+
+;(function () {
+	var favicon  = document.createElement("link");
+	favicon.rel  = "shortcut icon";
+	favicon.href = "favicon.ico";
+	document.head.appendChild(favicon);
+}());</script><tw-tag name="hi" color="none"></tw-tag><tw-passagedata pid="1" name="start" tags="" position="450,0" size="100,100">You lay in bed.
 
 It is 12:00 AM.
 
@@ -147,23 +158,7 @@ You want a (t8n-time:0.5s)[[MIDNIGHT SNACK-&gt;bedroom]].\
 |int&gt;[(link:&quot;Interactable&quot;)[]]
 |opn&gt;[(link:&quot;Openable&quot;)[]]
 |itm&gt;[(link:&quot;Item&quot;)[]]
---&gt;\
-&lt;script&gt;
-;(function () {
-	var favicon  = document.createElement(&quot;link&quot;);
-	favicon.rel  = &quot;shortcut icon&quot;;
-	favicon.href = &quot;favicon.ico&quot;;
-	document.head.appendChild(favicon);
-}());
-&lt;/script&gt;
-
-&lt;script&gt;
-var audio= document.createElement(&#39;audio&#39;);
-audio.src=
-	&#39;assets/audio/chtr.mp3&#39;;
-audio.loop = true;
-audio.play();
-&lt;/script&gt;</tw-passagedata><tw-passagedata pid="2" name="BillyZone" tags="" position="600,0" size="100,100">ok
+--&gt;\</tw-passagedata><tw-passagedata pid="2" name="BillyZone" tags="" position="600,0" size="100,100">ok
 
 [[hehoo-&gt;start]] 
 
