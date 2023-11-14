@@ -260,15 +260,7 @@ This is your room. The \
     (rerun:?bOpen)\
     (set:$eX_actions to it + (a:&quot;You eat the STALE CHIPS. They were salty.&quot;))\
     (rerun:?actions)\
-]\
-\
-\&lt;script&gt;
-var audio= document.createElement(&#39;audio&#39;);
-audio.src=
-	&#39;assets/audio/chtr.mp3&#39;;
-audio.loop = true;
-audio.play();
-&lt;/script&gt;</tw-passagedata><tw-passagedata pid="5" name="bathroom" tags="" position="150,150" size="100,100">(set:$eX_actions to (a:))\
+\]</tw-passagedata><tw-passagedata pid="5" name="bathroom" tags="" position="150,150" size="100,100">(set:$eX_actions to (a:))\
 Your\
 |mcabClosed)[|int&gt;[\
 	(link-rerun:&quot;MEDICINE CABINET&quot;)[(show: ?mcabOpen)(hide: ?mcabClosed)(set: $bthr_cabOpened to true)]\
