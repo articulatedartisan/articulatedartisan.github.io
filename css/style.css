@@ -140,7 +140,7 @@ body {
 
 #i1ze {
     padding: 10px;
-    color: rgba(224, 224, 224, 1);
+    color: rgba(255, 255, 255, 1);
     font-family: Courier New, Courier, monospace;
     text-transform: none;
     backface-visibility: visible;
@@ -225,6 +225,30 @@ body {
     padding: 10px;
     color: #e9e9e9;
     font-family: Courier New, Courier, monospace;
+}
+
+#iiwnx {
+    color: rgba(229, 165, 138, 1);
+}
+
+#ibtry {
+    color: #4ec9b0;
+}
+
+#il3yb {
+    color: #4ec9b0;
+}
+
+#iq6r1 {
+    color: #4ec9b0;
+}
+
+#i4qmx {
+    color: #57a64a;
+}
+
+#ihz5u {
+    color: #57a64a;
 }
 
 .gjs-link { 
