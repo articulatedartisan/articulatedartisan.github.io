@@ -385,22 +385,42 @@ A sprout of dark hairs form across your body, thinly coating your previously smo
 
 (link:&quot;CONTINUE&quot;)[(set:_varOn to &quot;3b&quot;)(rerun:?p1)]
 ]\
+(if:_varOn is &quot;3a&quot;)[\
+You sense your voice and larynx deepening, a deep German accent settling into it. Not long after, age begins to set into your body, years of experience etching into your skin in the form of strength and coarseness previously absent.
 
-]
-uhh you u    tf ,
+Finally, your facial structure begins to shift. Your jaw grows more prominent, large, and angular, as your cheekbones become more defined. Your nose sharpens to a point as you find yourself looking in the mirror, taking in your new, masculine visage.
 
-ENDING 5: TF ENDING OR SOMETHING
+Looking back at you, you find a spitting image of the Medic. You roll your shoulders and stretch your arms, yawning from exhaustion. This is going to be hell to explain come morning...
 
-(link-rerun: &quot;PLAY AGAIN?&quot;)[(reload:)]
+ENDING 5: MEDICAL TRAINING
 
-(show:?p1)
+(link-rerun: &quot;PLAY AGAIN?&quot;)[(reload:)]\
+]\
+(if:_varOn is &quot;3b&quot;)[\
+The PILL BOTTLE you were holding falls from your hands, landing on the tiled floor that you stand on as the changes continue. You sense your voice and larynx deepening, a deep German accent settling into it. &quot;My voice,&quot; you say, gently caressing your throat. It feels odd hearing someone else&#39;s voice coming from your mouth.
 
+Age begins to set into your body, years of experience etching into your skin in the form of strength and coarseness previously absent. Finally, your facial structure begins to shift. Your jaw grows more prominent, large, and angular, as your cheekbones become more defined. Your nose sharpens to a point as you find yourself looking in the mirror, taking in your new, masculine visage.
 
+Looking back at you, you find a spitting image of the Medic. You roll your shoulders and stretch your arms, yawning from exhaustion. This is going to be hell to explain come morning...
 
+ENDING 5: MEDICAL TRAINING
 
+(link-rerun: &quot;PLAY AGAIN?&quot;)[(reload:)]\
+]\
+(if:_varOn is &quot;3c&quot;)[\
+You sense your voice and larynx deepening, a deep German accent settling into it. &quot;My voice,&quot; you say, gently caressing your throat, &quot;It sounds... Much better.&quot; You feel thoughts settling into your head as you set the PILL BOTTLE down to the side of you.
 
+Age begins to set into your body, years of experience etching into your skin in the form of strength and coarseness previously absent. Finally, your facial structure begins to shift. Your jaw grows more prominent, large, and angular, as your cheekbones become more defined. Your nose sharpens to a point as you find yourself looking in the mirror, taking in your masculine visage.
 
-</tw-passagedata></tw-storydata>
+That&#39;s right. //Your// masculine visage. Your head fills with a sudden rush of memories as you remember who you are... Ludwig Humboldt, although most people know you as &#39;the Medic&#39;. Sighing, you look into your foggy blue eyes. You have trouble remembering the moments leading up to this, or how exactly you got here, but you decide it&#39;s not worth thinking about this late into the night. You have work you need to do.
+
+ENDING 5: MEDICAL TRAINING
+
+(link-rerun: &quot;PLAY AGAIN?&quot;)[(reload:)]\
+]\
+&lt;!-- before here is variants --&gt;]\
+\
+\(show:?p1)</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
