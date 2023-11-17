@@ -273,6 +273,7 @@ This is your room. The \
     (set:$eX_actions to it + (a:&quot;You eat the STALE CHIPS. They were salty.&quot;))\
     (rerun:?actions)\
 \]</tw-passagedata><tw-passagedata pid="5" name="bathroom" tags="" position="150,150" size="100,100">(set:$eX_actions to (a:))\
+(set:$handsWashed to 0)\
 Your\
 |mcabClosed)[|int&gt;[\
 	(link-rerun:&quot;MEDICINE CABINET&quot;)[(show: ?mcabOpen)(hide: ?mcabClosed)(set: $bthr_cabOpened to true)]\
@@ -293,7 +294,17 @@ Your\
 	]\
 ]\
 \
-\ You see a |opn&gt;[(link-reveal: &quot;MIRROR&quot;)[(show: ?mirror)]].
+\You see a |opn&gt;[(link-reveal: &quot;MIRROR&quot;)[(show: ?mirror)]] above your |opn&gt;[(collapse:)[(link-rerun:&quot;SINK&quot;)[\
+	(if:$handsWashed is 0)[\
+    	(set:$eX_actions to it + (a:&quot;You wash your hands.&quot;))\
+    ](else-if:$handsWashed &lt; 5)[\
+    	(set:$eX_actions to it + (a:&quot;You wash your hands again.&quot;))\
+    ](else-if:$handsWashed &gt; 1)[\
+    	(set:$eX_actions to it + (a:&quot;You wash your hands even more.&quot;))\
+    ]\
+    (rerun:?actions)\
+    (set:$handsWashed to it + 1)\
+]]].
 
 (t8n-time:0.5s)[[GO TO LIVING ROOM-&gt;livingroom]]
 
@@ -328,17 +339,25 @@ This is the living room. It sucks.
 (t8n-time:0.5s)[[GO TO DINING ROOM-&gt;diningroom]]
 (t8n-time:0.5s)[[GO TO BATHROOM-&gt;bathroom]]
 
-|actions)[(display:&quot;actions&quot;)]</tw-passagedata><tw-passagedata pid="7" name="diningroom" tags="" position="150,300" size="100,100">You enter the eat-in kitchen. It&#39;s mostly barren of any food. All of your CUPBOARDS are closed.\
+|actions)[(display:&quot;actions&quot;)]</tw-passagedata><tw-passagedata pid="7" name="diningroom" tags="" position="150,300" size="100,100">(set:$eX_actions to (a:))\
+You enter the eat-in kitchen. It&#39;s mostly barren of any food. All of your CUPBOARDS are closed.\
 |fClosed)[\
 	Your |int&gt;[(link-rerun:&quot;FRIDGE&quot;)[(hide:?fClosed)(show:?fOpen)]] is closed.\
 ]\
 |fOpen)[\
 	Your |int&gt;[(link-rerun:&quot;FRIDGE&quot;)[(show:?fClosed)(hide:?fOpen)]] is opened. Inside, you find nothing. You feel the cool air from it against your skin.\
-]
+] Your |int&gt;[(link:&quot;SINK&quot;)[SINK(set:$eX_actions to it + (a:&quot;You try to turn on your sink. It&#39;s broken.&quot;))(rerun:?actions)]] is turned off.
 
 (t8n-time:0.5s)[[GO TO LIVING ROOM-&gt;livingroom]]
 
-(show:?fClosed)
+|actions)[(display:&quot;actions&quot;)]\
+|mirror)[\
+	(text-colour:#4c6ef5)[&gt;] You look in the mirror.
+	&lt;img src=&quot;assets/imgs/mirror.png&quot;&gt;\
+]\
+\
+(show: ?actions)\
+(show:?fClosed)\
 (hide:?fOpen)</tw-passagedata><tw-passagedata pid="8" name="actions" tags="" position="250,0" size="100,100">(for:each _i, ...$eX_actions)[\
 	(text-colour:#4c6ef5)[&gt;] _i
 ]</tw-passagedata><tw-passagedata pid="9" name="E3" tags="" position="0,200" size="100,100">You return to sleep. Hunger having been satiated, you feel the cool breeze brush against your skin.
