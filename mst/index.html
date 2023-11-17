@@ -312,16 +312,16 @@ Your\
 |mirror)[\
 	(text-colour:#4c6ef5)[&gt;] You look in the mirror.
 	&lt;img src=&quot;assets/imgs/mirror.png&quot;&gt;\
-]
-
+]\
+\
 (show: ?actions)\
-
+\
 (if: $bthr_cabOpened is false)[\
 	(hide: ?mcabOpen)(show: ?mcabClosed)\
 ](else:)[\
 	(show: ?mcabOpen)(hide: ?mcabClosed)\
-]
-
+]\
+\
 (click:&quot;PILL BOTTLE&quot;)[\
 	(set:$eX_energy to it + 5)\
     (set:$br_boxItems to it - (a:&quot;a PILL BOTTLE&quot;))\
