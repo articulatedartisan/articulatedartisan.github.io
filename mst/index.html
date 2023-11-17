@@ -131,18 +131,31 @@ tw-hook[name="rotate"] {
 
 img {
 	max-width: 100%;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript">var audio= document.createElement('audio');
-audio.src=
-	'assets/audio/chtr.mp3';
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">var audio = document.createElement('audio');
+audio.src = 'assets/audio/chtr.mp3';
 audio.loop = true;
-audio.play();
 
-//;(function () {
-//	var favicon  = document.createElement("link");
-//	favicon.rel  = "shortcut icon";
-//	favicon.href = "favicon.ico";
-//	document.head.appendChild(favicon);
-//}());</script><tw-tag name="hi" color="none"></tw-tag><tw-passagedata pid="1" name="start" tags="" position="450,0" size="100,100">You lay in bed.
+;(function () {
+	var favicon  = document.createElement("link");
+	favicon.rel  = "shortcut icon";
+	favicon.href = "favicon.ico";
+	document.head.appendChild(favicon);
+}());
+
+let nIntervId = setInterval(sillyBilly, 100);
+
+function sillyBilly() {
+ 	 if (audio.paused == true) {
+		audio.play().catch(function(error) {});
+     } else {
+       console.log("lol");
+       clearInterval(nIntervId);
+     }
+}
+
+
+
+</script><tw-tag name="hi" color="none"></tw-tag><tw-passagedata pid="1" name="start" tags="" position="450,0" size="100,100">You lay in bed.
 
 It is 12:00 AM.
 
