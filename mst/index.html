@@ -171,6 +171,8 @@ You want a (t8n-time:0.5s)[[MIDNIGHT SNACK-&gt;bedroom]].\
 \
 (set: $bthr_cabOpened to false)\
 (set: $bthr_boxItems to (a: &#39;a PILL BOTTLE&#39;, &#39;a LITTLE MAN&#39;))\
+\
+(set: $dngr_fridgeItems to (a: &#39;a COLD STEAK&#39;, &#39;a BIG MAN&#39;))\
 &lt;!--
 |int&gt;[(link:&quot;Interactable&quot;)[]]
 |opn&gt;[(link:&quot;Openable&quot;)[]]
@@ -325,10 +327,10 @@ Your\
 (click:&quot;PILL BOTTLE&quot;)[\
 	(set:$eX_energy to it + 5)\
     (set:$br_boxItems to it - (a:&quot;a PILL BOTTLE&quot;))\
-    
-    (go-to:&quot;TF1&quot;)
-    
-    &lt;!-- keeping this for in case i need it later :3 --&gt;
+    \
+    (go-to:&quot;TF1&quot;)\
+    \
+    &lt;!-- keeping this for in case i need it later :3 --&gt;\
     (rerun:?bOpen)\
     (set:$eX_actions to it + (a:&quot;You eat the PILL BOTTLE. They were salty.&quot;))\
     (rerun:?actions)\
@@ -345,11 +347,20 @@ You enter the eat-in kitchen. It&#39;s mostly barren of any food. All of your CU
 	Your |int&gt;[(link-rerun:&quot;FRIDGE&quot;)[(hide:?fClosed)(show:?fOpen)]] is closed.\
 ]\
 |fOpen)[\
-	Your |int&gt;[(link-rerun:&quot;FRIDGE&quot;)[(show:?fClosed)(hide:?fOpen)]] is opened. Inside, you find nothing. You feel the cool air from it against your skin.\
+	Your |int&gt;[(link-rerun:&quot;FRIDGE&quot;)[(show:?fClosed)(hide:?fOpen)]] is opened. Inside, you find\
+    (for: each _i, ...$dngr_fridgeItems)[\
+                (if: $dngr_fridgeItems&#39;s length &gt; 1 and $dngr_fridgeItems&#39;s last is _i)[\
+                	|itm&gt;[and _i].\
+                ](else:)[\
+                	|itm&gt;[_i](unless: $dngr_fridgeItems&#39;s last is _i)[, ](else:)[.]\
+                ]\
+            ]\
+You feel the cool air from it against your skin.\
 ] Your |opn&gt;[(link:&quot;SINK&quot;)[SINK(set:$eX_actions to it + (a:&quot;You try to turn on your sink. It&#39;s broken.&quot;))(rerun:?actions)]] is turned off.
 
 (t8n-time:0.5s)[[GO TO LIVING ROOM-&gt;livingroom]]
-
+(link:&quot;EXIT&quot;)[//Not yet.//]\
+\
 |actions)[(display:&quot;actions&quot;)]\
 |mirror)[\
 	(text-colour:#4c6ef5)[&gt;] You look in the mirror.
@@ -358,7 +369,15 @@ You enter the eat-in kitchen. It&#39;s mostly barren of any food. All of your CU
 \
 (show: ?actions)\
 (show:?fClosed)\
-(hide:?fOpen)</tw-passagedata><tw-passagedata pid="8" name="actions" tags="" position="250,0" size="100,100">(for:each _i, ...$eX_actions)[\
+(hide:?fOpen)\
+\
+(click:&quot;COLD STEAK&quot;)[\
+	(set:$eX_energy to it + 15)\
+    (set:$dngr_fridgeItems to it - (a:&quot;a COLD STEAK&quot;))\
+    (rerun:?fOpen)\
+    (set:$eX_actions to it + (a:&quot;You eat the COLD STEAK. It was a tough eat.&quot;))\
+    (rerun:?actions)\
+\]</tw-passagedata><tw-passagedata pid="8" name="actions" tags="" position="250,0" size="100,100">(for:each _i, ...$eX_actions)[\
 	(text-colour:#4c6ef5)[&gt;] _i
 ]</tw-passagedata><tw-passagedata pid="9" name="E3" tags="" position="0,200" size="100,100">You return to sleep. Hunger having been satiated, you feel the cool breeze brush against your skin.
 
